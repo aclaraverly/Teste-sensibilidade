@@ -1,2 +1,2 @@
-# Teste-sensibilidade
-Modelo computacional ósseo
+# Modelo-mestrado
+Modelo computacional de remodelação óssea

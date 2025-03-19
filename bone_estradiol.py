@@ -56,7 +56,7 @@ def feval(funcName, *args):
 
 # Define the function that contains the equations of the system to be evaluated.
 
-def bonerepair(t, y, kpb, apb, amb1):
+def bonerepair(t, y, E2max, ae2, de2):
     # Parameters of the system of ten equations described above:
 
     ke_1 = 3.0
@@ -94,12 +94,12 @@ def bonerepair(t, y, kpb, apb, amb1):
     apm = 3.162
     apm1 = 13.0
     dm = 1.0
-    #amb1 = 0.1
-    #kpb = 0.2202
-    #apb = 10.0
-    ae2 = 0.5 #estimado - artigo
-    E2max = 0.019 # artigo
-    de2 = 0.03  #artigo
+    amb1 = 0.1
+    kpb = 0.2202
+    apb = 10.0
+    #ae2 = 0.5 
+    #E2max = 0.019 # artigo
+    #de2 = 0.03  #artigo
 
 
     # Decouple to simplify the writing of the equations.

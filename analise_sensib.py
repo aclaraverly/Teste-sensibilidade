@@ -12,8 +12,8 @@ from SALib.sample import saltelli
 
 problem = {
     'num_vars': 3,
-    'names': ['kpb', 'apb', 'amb1'],
-    'bounds': [[0.1101, 0.3303], [5, 15], [0.05, 0.15]] 
+    'names': ['E2max', 'ae2', 'de2'],
+    'bounds': [[0.0095, 0.0284], [0.0284, 0.75], [0.015, 0.045]] 
 }  # 50% -/+
 
 param_values = saltelli.sample(problem, 1024)
@@ -36,8 +36,8 @@ E2 = 0.060
 yinit = np.array([D, Mo, M1, M2, C1, C2, Cm, Cb, Mc, Mb, E2])
 
 for params in param_values:
-    kpb, apb, amb1 = params
-    sol = solve_ivp(bonerepair, [0, 10], yinit, args=(kpb, apb, amb1,))
+    E2max, ae2, de2 = params
+    sol = solve_ivp(bonerepair, [0, 10], yinit, args=(E2max, ae2, de2,))
     Y.append(sol.y[7][-1])  #qual a variavel sera influenciada pelo parametro
 
 Y = np.array(Y)  

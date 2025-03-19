@@ -56,11 +56,11 @@ def feval(funcName, *args):
 
 # Define the function that contains the equations of the system to be evaluated.
 
-def bonerepair(t, y, ke_1, ke_2):
+def bonerepair(t, y, k_lb, d_b, dm):
     # Parameters of the system of ten equations described above:
 
-    #ke_1 = 3.0
-    #ke_2 = 3.0
+    ke_1 = 3.0
+    ke_2 = 3.0
     a_ed = 4.71*10**6
     d_o = 0.156
     k_12 = 0.075
@@ -74,8 +74,8 @@ def bonerepair(t, y, ke_1, ke_2):
     k_3 = 0.0000007
     d_c2 = 0.25
     K_lm = 1000000.0
-    k_lb = 1000000.0
-    d_b = 0.15
+    #k_lb = 1000000.0
+    #d_b = 0.15
     p_cs = 0.000003
     q_cd1 = 0.000003
     q_cd2 = 0.000002
@@ -93,7 +93,7 @@ def bonerepair(t, y, ke_1, ke_2):
     kpm = 0.5
     apm = 3.162
     apm1 = 13.0
-    dm = 1.0
+    #dm = 1.0
     amb1 = 0.1
     kpb = 0.2202
     apb = 10.0
@@ -188,8 +188,8 @@ def main():
   M2 = 0.0
   C1 = 100.0
   C2 = 1.0
-  Cm = 1000.0 #condicoes normais
-  Cb = 0.0 #1.8*10**6
+  Cm = 1000.0 
+  Cb = 0.0 
   Mc = 0.0
   Mb = 0.0
   E2 = 0.060

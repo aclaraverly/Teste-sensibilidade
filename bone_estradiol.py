@@ -56,11 +56,19 @@ def feval(funcName, *args):
 
 # Define the function that contains the equations of the system to be evaluated.
 
+<<<<<<< HEAD
 def bonerepair(t, y, E2max, ae2, de2):
     # Parameters of the system of ten equations described above:
 
     ke_1 = 3.0
     ke_2 = 3.0
+=======
+def bonerepair(t, y, ke_1, ke_2):
+    # Parameters of the system of ten equations described above:
+
+    #ke_1 = 3.0
+    #ke_2 = 3.0
+>>>>>>> cf069101aed0d24a757399f744cf46f88a779a4e
     a_ed = 4.71*10**6
     d_o = 0.156
     k_12 = 0.075
@@ -69,7 +77,11 @@ def bonerepair(t, y, E2max, ae2, de2):
     d_2 = 0.163
     k_o = 0.0000005
     k_1 = 0.0000083
+<<<<<<< HEAD
     d_c1 = 0.2 
+=======
+    d_c1 = 0.2 #20
+>>>>>>> cf069101aed0d24a757399f744cf46f88a779a4e
     k_2 = 0.00000372
     k_3 = 0.0000007
     d_c2 = 0.25
@@ -97,9 +109,15 @@ def bonerepair(t, y, E2max, ae2, de2):
     amb1 = 0.1
     kpb = 0.2202
     apb = 10.0
+<<<<<<< HEAD
     #ae2 = 0.5 
     #E2max = 0.019 # artigo
     #de2 = 0.03  #artigo
+=======
+    ae2 = 0.5 #estimado - artigo
+    E2max = 0.019 # artigo
+    de2 = 0.03  #artigo
+>>>>>>> cf069101aed0d24a757399f744cf46f88a779a4e
 
 
     # Decouple to simplify the writing of the equations.
@@ -188,8 +206,13 @@ def main():
   M2 = 0.0
   C1 = 100.0
   C2 = 1.0
+<<<<<<< HEAD
   Cm = 1000.0 
   Cb = 0.0 
+=======
+  Cm = 1000.0 #condicoes normais
+  Cb = 0.0 #1.8*10**6
+>>>>>>> cf069101aed0d24a757399f744cf46f88a779a4e
   Mc = 0.0
   Mb = 0.0
   E2 = 0.060

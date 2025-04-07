@@ -56,50 +56,50 @@ def feval(funcName, *args):
 
 # Define the function that contains the equations of the system to be evaluated.
 
-def bonerepair(t, y, ke_1, ke_2, E2max, apm):
+def bonerepair(t, y, ke_1, ke_2, a_ed, d_o, k_12, k_21, d_1, d_2, k_o, k_1, d_c1, k_2, k_3, d_c2, K_lm, k_lb, d_b, p_cs, q_cd1, q_cd2, p_bs, q_bd, aed, kmax, Mmax, k_01, a_01, k_02, a_02, a_12, a_22, kpm, apm, apm1, dm, amb1, kpb, apb, ae2, E2max, de2):
     # Parameters of the system of ten equations described above:
 
     #ke_1 = 3.0
     #ke_2 = 3.0
-    a_ed = 4.71*10**6
-    d_o = 0.156
-    k_12 = 0.075
-    k_21 = 0.005
-    d_1 = 0.121
-    d_2 = 0.163
-    k_o = 0.0000005
-    k_1 = 0.0000083
-    d_c1 = 0.2 
-    k_2 = 0.00000372
-    k_3 = 0.0000007
-    d_c2 = 0.25
-    K_lm = 1000000.0
-    k_lb = 1000000.0
-    d_b = 0.15
-    p_cs = 0.000003
-    q_cd1 = 0.000003
-    q_cd2 = 0.000002
-    p_bs = 0.00000005
-    q_bd = 0.00000005
-    aed = 4.71*10**6
-    kmax = 0.015
-    Mmax = 6.0*10**5
-    k_01 = 0.55
-    a_01 = 0.01
-    k_02 = 0.3
-    a_02 = 0.005
-    a_12 = 0.025
-    a_22 = 0.1
-    kpm = 0.5
+    #a_ed = 4.71*10**6
+    #d_o = 0.156
+    #k_12 = 0.075
+    #k_21 = 0.005
+    #d_1 = 0.121
+    #d_2 = 0.163
+    #k_o = 0.0000005
+    #k_1 = 0.0000083
+    #d_c1 = 0.2 
+    #k_2 = 0.00000372
+    #k_3 = 0.0000007
+    #d_c2 = 0.25
+    #K_lm = 1000000.0
+    #k_lb = 1000000.0
+    #d_b = 0.15
+    #p_cs = 0.000003
+    #q_cd1 = 0.000003
+    #q_cd2 = 0.000002
+    #p_bs = 0.00000005
+    #q_bd = 0.00000005
+    #aed = 4.71*10**6
+    #kmax = 0.015
+    #Mmax = 6.0*10**5
+    #k_01 = 0.55
+    #a_01 = 0.01
+    #k_02 = 0.3
+    #a_02 = 0.005
+    #a_12 = 0.025
+    #a_22 = 0.1
+    #kpm = 0.5
     #apm = 3.162
-    apm1 = 13.0
-    dm = 1.0
-    amb1 = 0.1
-    kpb = 0.2202
-    apb = 10.0
-    ae2 = 0.5 
-    #E2max = 0.019 # artigo
-    de2 = 0.03  #artigo
+    #apm1 = 13.0
+    #dm = 1.0
+    #amb1 = 0.1
+    #kpb = 0.2202
+    #apb = 10.0
+    #ae2 = 0.5 
+    #E2max = 0.019 
+    #de2 = 0.03  
 
 
     # Decouple to simplify the writing of the equations.

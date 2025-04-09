@@ -8,6 +8,7 @@ from scipy.integrate import solve_ivp
 import SALib
 from SALib.analyze import sobol
 from SALib.sample import saltelli
+import matplotlib.pyplot as plt
 
 
 problem = {
@@ -59,23 +60,27 @@ print(df_sobol) # Permite ver quais parâmetros mais influenciam a variável de 
 
 # Influência de cada parâmetro na saída, com barras de erro representando os intervalos de confiança.
 
-plt.figure(figsize=(24, 18))
-plt.bar(df_sobol['Parameter'], df_sobol['S1'], yerr=df_sobol['S1_conf'], capsize=5)
-plt.xlabel('Parâmetros')
-plt.ylabel('Índice de Sensibilidade S1')
+
+plt.figure(figsize=(20, 36))  # altura grande para acomodar os 41 parâmetros
+plt.barh(df_sobol['Parameter'], df_sobol['S1'], xerr=df_sobol['S1_conf'], capsize=5)
+plt.ylabel('Parâmetros')
+plt.xlabel('Índice de Sensibilidade S1')
 plt.title('Análise de Sensibilidade - Sobol (S1)')
-plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.grid(axis='x', linestyle='--', alpha=0.7)
+plt.tight_layout()
 plt.show()
-plt.savefig()
+plt.savefig('sobol_s1.png')
 
 
-plt.figure(figsize=(24, 18))
-plt.bar(df_sobol['Parameter'], df_sobol['ST'], yerr=df_sobol['ST_conf'], capsize=5, color='orange')
-plt.xlabel('Parâmetros')
-plt.ylabel('Índice de Sensibilidade Total (ST)')
+plt.figure(figsize=(20, 36))
+plt.barh(df_sobol['Parameter'], df_sobol['ST'], xerr=df_sobol['ST_conf'], capsize=5, color='orange')
+plt.ylabel('Parâmetros')
+plt.xlabel('Índice de Sensibilidade Total (ST)')
 plt.title('Análise de Sensibilidade - Sobol (ST)')
-plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.grid(axis='x', linestyle='--', alpha=0.7)
+plt.tight_layout()
 plt.show()
-plt.savefig()
+plt.savefig('sobol_st.png')
 
-df_sobol.to_csv('resultados_sobol.csv', index=False, encoding='utf-8') 
+# Exporta CSV
+df_sobol.to_csv('resultados_sobol.csv', index=False, encoding='utf-8')

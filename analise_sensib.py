@@ -31,15 +31,14 @@ Cm = 1000.0
 Cb = 0.0 
 Mc = 0.0
 Mb = 0.0
-E2 = 0.060
-
+E2 = 0.018
 
 yinit = np.array([D, Mo, M1, M2, C1, C2, Cm, Cb, Mc, Mb, E2])
 
 for params in param_values:
     ke_1, ke_2, a_ed, d_o, k_12, k_21, d_1, d_2, k_o, k_1, d_c1, k_2, k_3, d_c2, K_lm, k_lb, d_b, p_cs, q_cd1, q_cd2, p_bs, q_bd, aed, kmax, Mmax, k_01, a_01, k_02, a_02, a_12, a_22, kpm, apm, apm1, dm, amb1, kpb, apb, ae2, E2max, de2 = params
     sol = solve_ivp(bonerepair, [0, 10], yinit, args=(ke_1, ke_2, a_ed, d_o, k_12, k_21, d_1, d_2, k_o, k_1, d_c1, k_2, k_3, d_c2, K_lm, k_lb, d_b, p_cs, q_cd1, q_cd2, p_bs, q_bd, aed, kmax, Mmax, k_01, a_01, k_02, a_02, a_12, a_22, kpm, apm, apm1, dm, amb1, kpb, apb, ae2, E2max, de2,))
-    Y.append(sol.y[10][-1])  #qual a variavel sera influenciada pelo parametro
+    Y.append(sol.y[7][-1])  #qual a variavel sera influenciada pelo parametro
 
 Y = np.array(Y)  
 
@@ -61,7 +60,7 @@ print(df_sobol) # Permite ver quais parâmetros mais influenciam a variável de 
 # Influência de cada parâmetro na saída, com barras de erro representando os intervalos de confiança.
 
 
-plt.figure(figsize=(20, 36))  # altura grande para acomodar os 41 parâmetros
+plt.figure(figsize=(10, 18)) 
 plt.barh(df_sobol['Parameter'], df_sobol['S1'], xerr=df_sobol['S1_conf'], capsize=5)
 plt.ylabel('Parâmetros')
 plt.xlabel('Índice de Sensibilidade S1')
@@ -71,13 +70,12 @@ plt.tight_layout()
 plt.show()
 plt.savefig('sobol_s1.png')
 
-
-plt.figure(figsize=(20, 36))
-plt.barh(df_sobol['Parameter'], df_sobol['ST'], xerr=df_sobol['ST_conf'], capsize=5, color='orange')
-plt.ylabel('Parâmetros')
-plt.xlabel('Índice de Sensibilidade Total (ST)')
+plt.figure(figsize=(10, 18))
+plt.barh(df_sobol['Parameter'], df_sobol['ST'], yerr=df_sobol['ST_conf'], capsize=5, color='orange')
+plt.xlabel('Parâmetros')
+plt.ylabel('Índice de Sensibilidade Total (ST)')
 plt.title('Análise de Sensibilidade - Sobol (ST)')
-plt.grid(axis='x', linestyle='--', alpha=0.7)
+plt.grid(axis='y', linestyle='--', alpha=0.7)
 plt.tight_layout()
 plt.show()
 plt.savefig('sobol_st.png')

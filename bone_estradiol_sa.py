@@ -33,7 +33,7 @@ params_base = {
     'kpb': 0.2202, 'apb': 10.0, 'ae2': 0.5, 'E2max': 0.019, 'de2': 0.03
 }
 
-values = np.linspace( 0.2202, 1.1, 10)
+values = np.linspace(0.019, 1.1, 10)
 prm = []
 # Armazenar resultados de Cb para cada parametro
 Cb_all = []
@@ -42,8 +42,8 @@ Cb_all = []
 i=0
 for v in values:
     params = params_base.copy() # cria uma cópia evitando alterar o dicionário original a cada iteração.
-    params['kpb'] = params['kpb']*v # substitui por um novo valor.
-    prm.append(params['kpb'])
+    params['E2max'] = params['E2max']*v # substitui por um novo valor.
+    prm.append(params['E2max'])
     i=i+1
     p_vals = list(params.values()) # Extrai apenas os valores numéricos dos parâmetros e os converte em uma lista.
     sol = odeint(bonerepair, yinit, t, args=tuple(p_vals))  
@@ -62,16 +62,16 @@ Cb_std = np.std(Cb_all, axis=0)    #desvio
 
 plt.figure(figsize=(10, 6))
 for i, Cb in enumerate(Cb_all):
-    plt.plot(t, Cb, alpha=0.3, label=f'kpb = {prm[i]:.2f}')
+    plt.plot(t, Cb, alpha=0.3, label=f'E2max = {prm[i]:.2f}')
 plt.plot(t, Cb_mean, color='black', label='Média', linewidth=2)
 plt.xlabel('Dias')
 plt.ylabel('Cb (Osteoblastos)')
-plt.title('Sensibilidade de Cb ao longo do tempo em relação a kpb')
+plt.title('Sensibilidade de Cb ao longo do tempo em relação a E2max')
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
 plt.show()
-plt.savefig('kpb.png')
+
 
       
 

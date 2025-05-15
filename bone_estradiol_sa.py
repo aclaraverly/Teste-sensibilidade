@@ -33,17 +33,17 @@ params_base = {
     'kpb': 0.2202, 'apb': 10.0, 'ae2': 0.5, 'E2max': 0.019, 'de2': 0.03
 }
 
-values = np.linspace(0.1, 1.1, 10)
+values = np.linspace( 0.2202, 1.1, 10)
 prm = []
-# Armazenar resultados de Cb para cada ke_1
+# Armazenar resultados de Cb para cada parametro
 Cb_all = []
 
-# modelo é simulado 10 vezes, cada uma com um valor diferente de ke_( taxa de eliminação de detritos ósseos por macrófagos M1), para ver como isso afeta a variável Cb.
+# modelo é simulado 10 vezes, cada uma com um valor diferente de cada parametro, para ver como isso afeta a variável Cb.
 i=0
 for v in values:
     params = params_base.copy() # cria uma cópia evitando alterar o dicionário original a cada iteração.
-    params['amb1'] = params['amb1']*v # substitui por um novo valor.
-    prm.append(params['amb1'])
+    params['kpb'] = params['kpb']*v # substitui por um novo valor.
+    prm.append(params['kpb'])
     i=i+1
     p_vals = list(params.values()) # Extrai apenas os valores numéricos dos parâmetros e os converte em uma lista.
     sol = odeint(bonerepair, yinit, t, args=tuple(p_vals))  
@@ -62,16 +62,16 @@ Cb_std = np.std(Cb_all, axis=0)    #desvio
 
 plt.figure(figsize=(10, 6))
 for i, Cb in enumerate(Cb_all):
-    plt.plot(t, Cb, alpha=0.3, label=f'amb1 = {prm[i]:.2f}')
+    plt.plot(t, Cb, alpha=0.3, label=f'kpb = {prm[i]:.2f}')
 plt.plot(t, Cb_mean, color='black', label='Média', linewidth=2)
 plt.xlabel('Dias')
 plt.ylabel('Cb (Osteoblastos)')
-plt.title('Sensibilidade de Cb ao longo do tempo em relação a amb1')
+plt.title('Sensibilidade de Cb ao longo do tempo em relação a kpb')
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
 plt.show()
-plt.savefig('amb1.png')
+plt.savefig('kpb.png')
 
       
 

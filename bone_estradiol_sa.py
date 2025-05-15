@@ -33,7 +33,7 @@ params_base = {
     'kpb': 0.2202, 'apb': 10.0, 'ae2': 0.5, 'E2max': 0.019, 'de2': 0.03
 }
 
-values = np.linspace(0.03, 1.1, 10)
+values = np.linspace(0.1, 1.1, 10)
 prm = []
 # Armazenar resultados de Cb para cada parametro
 Cb_all = []
@@ -49,11 +49,11 @@ for v in values:
     sol = odeint(bonerepair, yinit, t, args=tuple(p_vals))  
     Cb_all.append(sol[:, 7])  # Cb 
     
-print(prm)
+#print(prm)
 
 Cb_all = np.array(Cb_all)
 
-print(Cb_all)
+#print(Cb_all)
 
 # Estatísticas temporais
 Cb_mean = np.mean(Cb_all, axis=0)  #media temporal
@@ -62,7 +62,7 @@ Cb_std = np.std(Cb_all, axis=0)    #desvio
 
 plt.figure(figsize=(10, 6))
 for i, Cb in enumerate(Cb_all):
-    plt.plot(t, Cb, alpha=0.3, label=f'de2 = {prm[i]:.2f}')
+    plt.plot(t, Cb, alpha=0.3, label=f'de2 = {prm[i]:.4f}')
 plt.plot(t, Cb_mean, color='black', label='Média', linewidth=2)
 plt.xlabel('Dias')
 plt.ylabel('Cb (Osteoblastos)')
@@ -71,6 +71,7 @@ plt.legend()
 plt.grid(True)
 plt.tight_layout()
 plt.show()
+
 
 
       

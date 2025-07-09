@@ -51,7 +51,7 @@ def plots(t,days,ys):
     plt.tight_layout()
 
     # exibe a figura
-    plt.savefig('inflamatorio.png')
+    plt.savefig('output/inflamatorio.png')
     plt.show()
 
     print(ys1)
@@ -102,7 +102,7 @@ def plots(t,days,ys):
     plt.tight_layout()
 
     # Display the figure.
-    plt.savefig('osso.png')
+    plt.savefig('output/osso.png')
     plt.show()
     
     
@@ -128,7 +128,7 @@ def plots_estradiol(t,days,ys, ys_min):
     ax.set_xlim(0,days)
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig('E2.png')
+    plt.savefig('output/E2.png')
 
     #ys19osso = ys10
 
@@ -142,7 +142,7 @@ def plots_estradiol(t,days,ys, ys_min):
 
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig('Osso_E2.png')
+    plt.savefig('output/Osso_E2.png')
     #ys19c2 = ys6
 
     fig, ax = plt.subplots(figsize=(5, 4), tight_layout=True)
@@ -155,7 +155,7 @@ def plots_estradiol(t,days,ys, ys_min):
     plt.grid(True)
 
     plt.tight_layout()
-    plt.savefig('IL-10_E2.png')
+    plt.savefig('output/IL-10_E2.png')
 
     #ys19osso = ys10
 
@@ -168,7 +168,7 @@ def plots_estradiol(t,days,ys, ys_min):
     ax.set_xlim(0,days)
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig('Cartilagem_E2.png')
+    plt.savefig('output/Cartilagem_E2.png')
 
 
 

@@ -143,6 +143,7 @@ def main():
   
   days = 360
   t = np.linspace(0, days)
+  print(days)
 
   # condicoes iniciais
   D  = 5.0*10**5
@@ -159,7 +160,7 @@ def main():
 
 
   yinit = np.array([D, Mo, M1, M2, C1, C2, Cm, Cb, Mc, Mb, E2])
-
+  print('Roda com o valor maximo...')
   # E2_max no valor maximo primeiro
   ys = odeint(bonerepair, yinit, t, args=(E2,))
 
@@ -170,7 +171,7 @@ def main():
   #Atualiza condicao inicial do E2 para rodar a segunda vez
   E2 = 0.019
   yinit = np.array([D, Mo, M1, M2, C1, C2, Cm, Cb, Mc, Mb, E2])
-
+  print('Roda com o valor minimo...')
   # E2_max com o valor minimo na segunda chamada
   ys_min = odeint(bonerepair, yinit, t, args=(E2,))
 

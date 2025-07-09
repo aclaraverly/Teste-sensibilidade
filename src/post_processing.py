@@ -1,7 +1,8 @@
 
 import matplotlib.pyplot as plt
 
-path = '../output/'
+path = "C:/Users/anacl/OneDrive/Área de Trabalho/Bone-estradiol-model-main/Bone-estradiol-model-main/output/"
+#path = 'output/'
 
 def plots(t,days,ys):
     
@@ -54,6 +55,7 @@ def plots(t,days,ys):
 
     # exibe a figura
     plt.savefig(f'{path}inflamatorio.png')
+    print(f'{path}inflamatorio.png')
     plt.show()
 
     print(ys1)

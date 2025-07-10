@@ -118,9 +118,9 @@ def bonerepair(y,t, E2_max):
 # Simulated days
 def main():
   
-  days = 360
-  t = np.linspace(0, days, days*10)
-  print(days)
+  days = 100
+  t = np.linspace(0, days, days)
+  print(t)
 
   # condicoes iniciais
   D  = 5.0*10**5
@@ -142,7 +142,7 @@ def main():
 
   #D, Mo, M1, M2, C1, C2, Cm, Cb, Mc, Mb, E2
   # salva figuras
-  pp.plots(t,days,ys)
+  #pp.plots(t,days,ys)
 
   #Atualiza condicao inicial do E2 para rodar a segunda vez
   E2 = 0.019

@@ -1,5 +1,6 @@
 
 import matplotlib.pyplot as plt
+import pandas as pd
 
 path = "C:/Users/anacl/OneDrive/Área de Trabalho/Bone-estradiol-model-main/Bone-estradiol-model-main/output/"
 #path = 'output/'
@@ -122,6 +123,18 @@ def plots_estradiol(t,days,ys, ys_min):
     ys19cart = ys_min[:,8]
     ys19c2 = ys_min[:,5]
 
+    d = {'tempo': t, 'osso': ys60osso}
+    df = pd.DataFrame(data=d)
+    # Write the DataFrame to a CSV file
+    df.to_csv('osso_valormax.csv', index=False)
+    print('Arquivo gerado') 
+    #fazer para 0,19
+    d2 = {'tempo': t, 'osso': ys19osso}
+    df2 = pd.DataFrame(data=d2)
+    print(df2)
+    # Write the DataFrame to a CSV file
+    df2.to_csv('osso_valormin.csv', index=False)
+    
     fig, ax = plt.subplots(figsize=(5, 4), tight_layout=True)
     ax.plot(t, ys19, 'k', t, ys60, 'g')
     #ax.xlim(0,days)

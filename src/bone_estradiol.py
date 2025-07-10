@@ -113,9 +113,6 @@ def bonerepair(y,t, E2_max):
   dydt = [dDdt, dModt, dM1dt, dM2dt, dC1dt, dC2dt, dCmdt, dCbdt, dMcdt, dMbdt, dE2dt]
   return dydt
 
-
-
-# Simulated days
 def main():
   
   days = 100
@@ -150,10 +147,9 @@ def main():
   print('Roda com o valor minimo...')
   # E2_max com o valor minimo na segunda chamada
   ys_min = odeint(bonerepair, yinit, t, args=(E2,))
-
-  pp.plots_estradiol(t,days,ys, ys_min)
-
+  pp.plots(t, days, ys)
   
-  
+  pp.plots_estradiol(t,days,ys,ys_min)
+
 if __name__ == "__main__":
     main()

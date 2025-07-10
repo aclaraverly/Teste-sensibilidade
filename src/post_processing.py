@@ -17,100 +17,103 @@ def plots(t,days,ys):
     ys8 = ys[:,7]
     ys9 = ys[:,8]
     ys10 = ys[:,9]
-    
-    plt.figure()
 
     # Debris
-    plt.subplot(221)
+    plt.figure()  
     plt.plot(t, ys1, 'r')
     plt.legend(["D"])
     plt.xlim(0,days)
+    plt.xlabel('Tempo (dias)')
+    plt.ylabel('Concentração')
     plt.title('Detritos')
+    plt.legend(loc='upper right', fontsize=12)
     plt.grid(True)
+    plt.savefig(f'{path}D.png')
+    print(f'{path}D.png')
+    plt.show()
 
-    # Macrophagos
-    plt.subplot(222)
+
+    # Macrofagos
+    plt.figure()
     plt.plot(t, ys2, '--k', t,ys3, 'b', t,ys4, 'g')
     plt.legend(["M0", "M1", "M2"])
     plt.xlim(0,days)
     plt.title('Macrófagos')
     plt.grid(True)
+    plt.savefig(f'{path}MoM1M2.png')
+    print(f'{path}MoM1M2.png')
+    plt.show()
 
-    # TNF
-    plt.subplot(223)
+    # TNFalfa - pró-inflamatória
+    plt.figure()
     plt.plot(t, ys5, 'g')
     plt.legend(["c1"])
     plt.xlim(0,days)
     plt.title('Citocinas pró-inflamatórias')
     plt.grid(True)
+    plt.savefig(f'{path}c1.png')
+    print(f'{path}c1.png')
+    plt.show()
 
     # IL10
-    plt.subplot(224)
+    plt.figure()
     plt.plot(t, ys6, 'c')
     plt.legend(["c2"])
     plt.xlim(0,days)
     plt.title('Citocinas anti-inflamatórias')
     plt.grid(True)
-
-    plt.tight_layout()
-
-    # exibe a figura
-    plt.savefig(f'{path}inflamatorio.png')
-    print(f'{path}inflamatorio.png')
+    plt.savefig(f'{path}c2.png')
+    print(f'{path}c2.png')
     plt.show()
 
+    #plt.tight_layout()
     print(ys1)
-
-    plt.figure()
-
     # Mesenchymal stem cells
-
-    plt.subplot(231)
+    plt.figure()
     plt.plot(t, ys7, 'b')
     plt.xlim(0,days)
     plt.legend(["Cm"])
     plt.title('Células-tronco mesenquimais')
     plt.grid(True)
+    plt.savefig(f'{path}cm.png')
+    print(f'{path}cm.png')
+    plt.show()
 
     # Osteoblasts
-    plt.subplot(232)
+    plt.figure()
     plt.plot(t, ys8, 'y')
     plt.legend(["Cb"])
     plt.xlim(0,days)
     plt.title('Osteoblastos')
     plt.grid(True)
+    plt.savefig(f'{path}Cb.png')
+    print(f'{path}Cb.png')
+    plt.show()
 
     # cartilage
-    plt.subplot(233)
+    plt.figure()
     plt.plot(t, ys9, 'g')
     plt.xlim(0,days)
     plt.legend(["Mc"])
     plt.title('Cartilagem')
     plt.grid(True)
+    plt.savefig(f'{path}mc.png')
+    print(f'{path}mc.png')
+    plt.show()
 
     # bone
-    plt.subplot(234)
+    plt.figure()
     plt.plot(t, ys10, 'r')
     plt.xlim(0,days)
     plt.legend(["Mb"])
     plt.title('Osso')
     plt.grid(True)
-    
-    #Estradiol sérico
-    #plt.subplot(235)
-    #plt.plot(t, ys11, 'k')
-    #plt.xlim(0,days)
-    #plt.legend(["E2"])
-    #plt.title('Estradiol')
-    #plt.grid(True)
+    plt.savefig(f'{path}mb.png')
+    print(f'{path}mb.png')
+    plt.show()
 
     plt.tight_layout()
-
-    # Display the figure.
-    plt.savefig(f'{path}osso.png')
-    plt.show()
-    
-    
+ 
 def plots_estradiol(t,days,ys, ys_min):
     # desacopla os resultados
     ys60 = ys[:,10] # estradiol E2 = 0.06

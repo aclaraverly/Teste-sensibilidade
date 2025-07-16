@@ -24,16 +24,16 @@ def bonerepair(y,t, E2_max):
   d_2 = 0.163
   k_o = 0.0000005
   k_1 = 0.0000083
-  d_c1 = 0.2 
+  d_c1 = 12.79 
   k_2 = 0.00000372
   k_3 = 0.0000007
-  d_c2 = 0.25
+  d_c2 = 2.5
   K_lm = 1000000.0
   k_lb = 1000000.0
   d_b = 0.15
   p_cs = 0.000003
   q_cd1 = 0.000003
-  q_cd2 = 0.000002
+  q_cd2 = 0.0000002
   p_bs = 0.00000005
   q_bd = 0.00000005
   aed = 4.71*10**6
@@ -41,7 +41,7 @@ def bonerepair(y,t, E2_max):
   Mmax = 6.0*10**5
   k_01 = 0.55
   a_01 = 0.01
-  k_02 = 0.3
+  k_02 = 0.0843
   a_02 = 0.005
   a_12 = 0.025
   a_22 = 0.1
@@ -115,22 +115,23 @@ def bonerepair(y,t, E2_max):
 
 def main():
   
-  days = 100
+  days = 360
   t = np.linspace(0, days, days)
   print(t)
 
   # condicoes iniciais
-  D  = 5.0*10**5
+  D  = 10**6
   Mo = 4000.0
   M1 = 0.0
   M2 = 0.0
-  C1 = 100.0
-  C2 = 1.0
-  Cm = 1000.0 
-  Cb = 0.0 
+  C1 = 700.0
+  C2 = 14.0
+  Cm = 2500.0 
+  Cb = 250.0 
   Mc = 0.0
   Mb = 0.0
   E2 = 0.060
+
 
   yinit = np.array([D, Mo, M1, M2, C1, C2, Cm, Cb, Mc, Mb, E2])
   print('Roda com o valor maximo...')

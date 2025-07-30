@@ -68,6 +68,7 @@ def plots(t,days,ys):
 
     #plt.tight_layout()
     print(ys1)
+    
     # Mesenchymal stem cells
     plt.figure()
     plt.plot(t, ys7, 'b')
@@ -162,8 +163,7 @@ def plots_estradiol(t,days,ys, ys_min):
 
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig(f'{path}Osso_E2.png')
-    #ys19c2 = ys6
+    plt.savefig(f'{path}Osso_E2.png') 
 
     fig, ax = plt.subplots(figsize=(5, 4), tight_layout=True)
     ax.plot(t, ys19c2, 'k', t, ys60c2, 'g')
@@ -181,7 +181,7 @@ def plots_estradiol(t,days,ys, ys_min):
 
     fig, ax = plt.subplots(figsize=(5, 4), tight_layout=True)
     ax.plot(t, ys19cart, 'k', t, ys60cart, 'g')
-    ax.legend(('E2 = 0.019', 'E2 = 0.060'), fontsize=14) #trocar
+    ax.legend(('E2 = 0.019', 'E2 = 0.060'), fontsize=14) 
     ax.set_title('Cartilagem', fontsize=14)
     ax.set_xlabel('Tempo (dias)', fontsize=14)
     ax.set_ylabel('Concentraçao', fontsize=14)

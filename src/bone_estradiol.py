@@ -5,17 +5,11 @@ import numpy as np
 from scipy.integrate import odeint,solve_ivp
 import post_processing as pp
 
-
-# Note: eval is part of the Python standard library.
-# More examples at the link: https://www.programiz.com/python-programming/methods/built-in/eval
-
-"""Now, let's define the function that contains the equations and their respective parameters."""
-
 # Define the function that contains the equations of the system to be evaluated.
 def bonerepair(y,t, E2_max):
   # Parameters of the system of ten equations described above:
-  ke_1 = 3.0
-  ke_2 = 3.0
+  ke_1 = 3 #48 max
+  ke_2 = 3.0 #48 max
   a_ed = 4.71*10**6
   d_o = 0.156
   k_12 = 0.075
@@ -24,7 +18,7 @@ def bonerepair(y,t, E2_max):
   d_2 = 0.163
   k_o = 0.0000005
   k_1 = 0.0000083
-  d_c1 = 12.79 
+  d_c1 = 12.79 #0,2 
   k_2 = 0.00000372
   k_3 = 0.0000007
   d_c2 = 2.5
@@ -37,8 +31,8 @@ def bonerepair(y,t, E2_max):
   p_bs = 0.00000005
   q_bd = 0.00000005
   aed = 4.71*10**6
-  kmax = 0.015
-  Mmax = 6.0*10**5
+  kmax = 0.015 #0.1
+  Mmax = 6.0*10**5 #1000000
   k_01 = 0.55
   a_01 = 0.01
   k_02 = 0.0843
@@ -53,7 +47,7 @@ def bonerepair(y,t, E2_max):
   kpb = 0.2202
   apb = 10.0
   ae2 = 0.5 
-  E2max = E2_max#0.019 
+  E2max = E2_max #0.019 
   de2 = 0.03  
 
   # Decouple to simplify the writing of the equations.
@@ -115,19 +109,19 @@ def bonerepair(y,t, E2_max):
 
 def main():
   
-  days = 360
+  days = 100
   t = np.linspace(0, days, days)
   print(t)
 
   # condicoes iniciais
-  D  = 10**6
+  D  = 1000000
   Mo = 4000.0
   M1 = 0.0
   M2 = 0.0
-  C1 = 700.0
-  C2 = 14.0
-  Cm = 2500.0 
-  Cb = 250.0 
+  C1 = 0  #700.0
+  C2 = 0 #14.0
+  Cm = 2500.0 #1000
+  Cb = 0#250.0 
   Mc = 0.0
   Mb = 0.0
   E2 = 0.060

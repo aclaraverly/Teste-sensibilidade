@@ -109,7 +109,7 @@ def bonerepair(y,t, E2_max):
 
 def main():
   
-  days = 100
+  days = 360
   t = np.linspace(0, days, days)
   print(t)
 
@@ -118,10 +118,10 @@ def main():
   Mo = 4000.0
   M1 = 0.0
   M2 = 0.0
-  C1 = 0  #700.0
+  C1 = 0 #700.0
   C2 = 0 #14.0
   Cm = 2500.0 #1000
-  Cb = 0#250.0 
+  Cb = 0 #250.0 
   Mc = 0.0
   Mb = 0.0
   E2 = 0.060
@@ -129,6 +129,7 @@ def main():
 
   yinit = np.array([D, Mo, M1, M2, C1, C2, Cm, Cb, Mc, Mb, E2])
   print('Roda com o valor maximo...')
+  
   # E2_max no valor maximo primeiro
   ys = odeint(bonerepair, yinit, t, args=(E2,))
 

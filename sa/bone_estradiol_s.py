@@ -6,13 +6,8 @@ from scipy.integrate import odeint,solve_ivp
 import post_processing as pp
 
 
-# Note: eval is part of the Python standard library.
-# More examples at the link: https://www.programiz.com/python-programming/methods/built-in/eval
-
-"""Now, let's define the function that contains the equations and their respective parameters."""
-
 # Define the function that contains the equations of the system to be evaluated.
-def bonerepair(y,t, *p):
+def bonerepair(t, y, *p):
   # Parameters of the system of ten equations described above:
   #ke_1 = 3.0
   #ke_2 = 3.0
@@ -57,13 +52,13 @@ def bonerepair(y,t, *p):
   #de2 = 0.03  
 
   # Decouple to simplify the writing of the equations.
-  D, Mo, M1, M2, C1, C2, Cm, Cb, Mc, Mb, E2 = y
+  [D, Mo, M1, M2, C1, C2, Cm, Cb, Mc, Mb, E2] = y
 
-  (
-    ke_1, ke_2, a_ed, d_o, k_12, k_21, d_1, d_2, k_o, k_1, d_c1, k_2, k_3, d_c2,
-    K_lm, k_lb, d_b, p_cs, q_cd1, q_cd2, p_bs, q_bd, aed, kmax, Mmax, k_01, a_01,
+  [
+    ke_1, ke_2, aed, d_o, k_12, k_21, d_1, d_2, k_o, k_1, d_c1, k_2, k_3, d_c2,
+    K_lm, k_lb, d_b, p_cs, q_cd1, q_cd2, p_bs, q_bd, kmax, Mmax, k_01, a_01,
     k_02, a_02, a_12, a_22, kpm, apm, apm1, dm, amb1, kpb, apb, ae2, E2max, de2
-  ) = p
+   ] = p
   
   # Phagocytosis rate
   def RD(t,D,a_ed):

@@ -19,17 +19,17 @@ param_values = saltelli.sample(problem, 2048)
 
 Y = []
 
-D  = 5.0*10**5
+D  = 5.0*10**6
 Mo = 4000.0
 M1 = 0.0
 M2 = 0.0
-C1 = 100.0
-C2 = 1.0
-Cm = 1000.0 
-Cb = 0.0 
+C1 = 0
+C2 = 0
+Cm = 2500
+Cb = 250 
 Mc = 0.0
 Mb = 0.0
-E2 = 0.018
+E2 = 0.019
 
 yinit = np.array([D, Mo, M1, M2, C1, C2, Cm, Cb, Mc, Mb, E2])
 

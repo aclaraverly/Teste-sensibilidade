@@ -170,9 +170,9 @@ def plots_estradiol(t,days,ys, ys_min):
     fig, ax = plt.subplots(figsize=(5, 4), tight_layout=True)
     ax.plot(t, ys19osso, 'k', t, ys60osso, 'g')
     ax.legend(('E2 = 0.019', 'E2 = 0.060'), fontsize=14) #trocar
-    ax.set_title('Osso', fontsize=14)
-    ax.set_xlabel('Tempo (dias)', fontsize=14)
-    ax.set_ylabel('Concentraçao', fontsize=14)
+    ax.set_title('Osteocyte', fontsize=14)
+    ax.set_xlabel('Time (days)', fontsize=14)
+    ax.set_ylabel('Concentration', fontsize=14)
     ax.set_xlim(0,days)
 
     plt.grid(True)

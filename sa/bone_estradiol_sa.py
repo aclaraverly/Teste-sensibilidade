@@ -14,10 +14,10 @@ yinit = np.array([
     4000.0, # Mo
     0.0,    # M1
     0.0,    # M2
-    100.0,  # C1
-    1.0,    # C2
-    1000.0, # Cm
-    0.0,    # Cb <- alvo da análise
+    700.0,  # C1
+    14.0,    # C2
+    2500.0, # Cm
+    250.0,    # Cb <- alvo da análise
     0.0,    # Mc
     0.0,    # Mb
     0.060   # E2

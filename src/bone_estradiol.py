@@ -44,9 +44,9 @@ def bonerepair(y,t, E2_max):
   amb1 = 0.1
   kpb = 0.08 #0.02202 #0.2202
   apb = 10.0
-  ae2 = 0.0021 
+  ae2 = 0.0021
   E2max = E2_max  
-  de2 = 0.0025  
+  de2 =  0.0025  
 
   # Decouple to simplify the writing of the equations.
   D, Mo, M1, M2, C1, C2, Cm, Cb, Mc, Mb, E2 = y
@@ -107,7 +107,7 @@ def bonerepair(y,t, E2_max):
 
 def main():
   
-  days = 720
+  days = 730
   t = np.linspace(0, days, days)
   print(t)
 
@@ -131,19 +131,10 @@ def main():
   # E2_max no valor maximo primeiro
   ys = odeint(bonerepair, yinit, t, args=(E2,))
 
-  #D, Mo, M1, M2, C1, C2, Cm, Cb, Mc, Mb, E2
-  # salva figuras
-  #pp.plots(t,days,ys)
-
-  #Atualiza condicao inicial do E2 para rodar a segunda vez
-  #E2 = 0.019
-  #yinit = np.array([D, Mo, M1, M2, C1, C2, Cm, Cb, Mc, Mb, E2])
-  #print('Roda com o valor minimo...')
-  # E2_max com o valor minimo na segunda chamada
-  #ys_min = odeint(bonerepair, yinit, t, args=(E2,))
+  
   pp.plots(t, days, ys)
   pp.plot_estradiol(t, days, ys)
-  #pp.plots_estradiol(t,days,ys,ys_min)
+  
 
 if __name__ == "__main__":
     main()

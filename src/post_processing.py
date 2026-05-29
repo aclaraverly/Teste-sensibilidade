@@ -1,147 +1,133 @@
-
 import matplotlib.pyplot as plt
 import pandas as pd
 
 path = "C:/Users/anacl/OneDrive/Área de Trabalho/Bone-estradiol-model-main/Bone-estradiol-model-main/output/"
-#path = 'output/'
+# path = 'output/'
 
-def plots(t,days,ys):
-    
-    ys1 = ys[:,0]
-    ys2 = ys[:,1]
-    ys3 = ys[:,2]
-    ys4 = ys[:,3]
-    ys5 = ys[:,4]
-    ys6 = ys[:,5]
-    ys7 = ys[:,6]
-    ys8 = ys[:,7]
-    ys9 = ys[:,8]
-    ys10 = ys[:,9]
+
+def plots(t, days, ys):
+
+    ys1 = ys[:, 0]   # D
+    ys2 = ys[:, 1]   # M0
+    ys3 = ys[:, 2]   # M1
+    ys4 = ys[:, 3]   # M2
+    ys5 = ys[:, 4]   # c1
+    ys6 = ys[:, 5]   # c2
+    ys7 = ys[:, 6]   # Cm
+    ys8 = ys[:, 7]   # Cb
+    ys9 = ys[:, 8]   # Mc
+    ys10 = ys[:, 9]  # Mb
+
+    # ============================
+    # Primeiro grupo de 4 gráficos
+    # D, Macrophages, c1, c2
+    # ============================
+
+    fig, axs = plt.subplots(2, 2, figsize=(12, 8))
 
     # Debris
-    plt.figure()  
-    plt.plot(t, ys1, 'r')
-    plt.legend(["D"])
-    plt.xlim(0,days)
-    plt.xlabel('Tempo (dias)')
-    plt.ylabel('Concentração')
-    plt.title('Detritos')
-    plt.legend(loc='upper right', fontsize=12)
-    plt.grid(True)
-    plt.savefig(f'{path}D.png')
-    print(f'{path}D.png')
-    #plt.show()
+    axs[0, 0].plot(t, ys1, 'r')
+    axs[0, 0].set_xlim(0, days)
+    axs[0, 0].set_xlabel('Time (days)')
+    axs[0, 0].set_ylabel('Concentration (cells/ml)')
+    axs[0, 0].set_title('Debris')
+    axs[0, 0].legend(["D"])
+    axs[0, 0].grid(True)
 
+    # Macrophages
+    axs[0, 1].plot(t, ys2, '--k', t, ys3, 'b', t, ys4, 'g')
+    axs[0, 1].set_xlim(0, days)
+    axs[0, 1].set_xlabel('Time (days)')
+    axs[0, 1].set_ylabel('Concentration (cells/ml)')
+    axs[0, 1].set_title('Macrophages')
+    axs[0, 1].legend(["M0", "M1", "M2"])
+    axs[0, 1].grid(True)
 
-    # Macrofagos
-    plt.figure()
-    plt.plot(t, ys2, '--k', t,ys3, 'b', t,ys4, 'g')
-    plt.legend(["M0", "M1", "M2"])
-    plt.xlim(0,days)
-    plt.xlabel('Tempo (dias)')
-    plt.ylabel('Concentração')
-    plt.title('Macrófagos')
-    plt.grid(True)
-    plt.savefig(f'{path}MoM1M2.png')
-    print(f'{path}MoM1M2.png')
-    #plt.show()
+    # Pro-inflammatory cytokines
+    axs[1, 0].plot(t, ys5, 'g')
+    axs[1, 0].set_xlim(0, days)
+    axs[1, 0].set_xlabel('Time (days)')
+    axs[1, 0].set_ylabel('Concentration (ng/ml)')
+    axs[1, 0].set_title('Pro-inflammatory cytokines')
+    axs[1, 0].legend(["c1"])
+    axs[1, 0].grid(True)
 
-    # TNFalfa - pró-inflamatória
-    plt.figure()
-    plt.plot(t, ys5, 'g')
-    plt.legend(["c1"])
-    plt.xlim(0,days)
-    plt.xlabel('Tempo (dias)')
-    plt.ylabel('Concentração')
-    plt.title('Citocinas pró-inflamatórias')
-    plt.grid(True)
-    plt.savefig(f'{path}c1.png')
-    print(f'{path}c1.png')
-    #plt.show()
+    # Anti-inflammatory cytokines
+    axs[1, 1].plot(t, ys6, 'c')
+    axs[1, 1].set_xlim(0, days)
+    axs[1, 1].set_xlabel('Time (days)')
+    axs[1, 1].set_ylabel('Concentration (ng/ml)')
+    axs[1, 1].set_title('Anti-inflammatory cytokines')
+    axs[1, 1].legend(["c2"])
+    axs[1, 1].grid(True)
 
-    # IL10
-    plt.figure()
-    plt.plot(t, ys6, 'c')
-    plt.legend(["c2"])
-    plt.xlim(0,days)
-    plt.xlabel('Tempo (dias)')
-    plt.ylabel('Concentração')
-    plt.title('Citocinas anti-inflamatórias')
-    plt.grid(True)
-    plt.savefig(f'{path}c2.png')
-    print(f'{path}c2.png')
-    
-     # Mesenchymal stem cells
-    plt.figure()
-    plt.plot(t, ys7, 'b')
-    plt.xlim(0,days)
-    plt.xlabel('Tempo (dias)')
-    plt.ylabel('Concentração')
-    plt.legend(["Cm"])
-    plt.title('Células-tronco mesenquimais')
-    plt.grid(True)
-    plt.savefig(f'{path}cm.png')
-    print(f'{path}cm.png')
-    #plt.show()
+    plt.tight_layout()
+    plt.savefig(f'{path}grupo_1_D_macrophages_c1_c2.png', dpi=300)
+    print(f'{path}grupo_1_D_macrophages_c1_c2.png')
+    plt.show()
+
+    # ============================
+    # Segundo grupo de 4 gráficos
+    # Cm, Cb, Mc, Mb
+    # ============================
+
+    fig, axs = plt.subplots(2, 2, figsize=(12, 8))
+
+    # Mesenchymal stem cells
+    axs[0, 0].plot(t, ys7, 'b')
+    axs[0, 0].set_xlim(0, days)
+    axs[0, 0].set_xlabel('Time (days)')
+    axs[0, 0].set_ylabel('Concentration (cells/ml)')
+    axs[0, 0].set_title('Mesenchymal stem cells')
+    axs[0, 0].legend(["Cm"])
+    axs[0, 0].grid(True)
 
     # Osteoblasts
-    plt.figure()
-    plt.plot(t, ys8, 'y')
-    plt.legend(["Cb"])
-    plt.xlim(0,days)
-    plt.xlabel('Tempo (dias)')
-    plt.ylabel('Concentração')
-    plt.title('Osteoblastos')
-    plt.grid(True)
-    plt.savefig(f'{path}Cb.png')
-    print(f'{path}Cb.png')
-    
-    # cartilage
-    plt.figure()
-    plt.plot(t, ys9, 'g', label="")
-    #plt.plot(df["x"], df["y"], marker="o", linestyle="-", label="Modelo referência")
-    plt.xlim(0,days)
-    plt.xlabel('Time (days)')
-    plt.ylabel('Concentration')
-    plt.legend(["Mc"])
-    plt.title('Cartilage')
-    plt.grid(True)
-    plt.legend()
-    plt.savefig(f'{path}mc.png')
-    print(f'{path}mc.png')
-    
-    
-    #bone
-    plt.figure()
-    plt.plot(t, ys10, 'r', label="")
-    #plt.plot(dv["x"], dv["y"], marker="o", linestyle="-", label="Modelo referência")
-    plt.xlim(0,days)
-    plt.xlabel('Time (days)')
-    plt.ylabel('Concentration')
-    plt.legend(["Mb"])
-    plt.title('Bone formation')
-    plt.grid(True)
-    plt.legend()
-    plt.savefig(f'{path}mb.png')
-    print(f'{path}mb.png')
-    
-    
+    axs[0, 1].plot(t, ys8, 'y')
+    axs[0, 1].set_xlim(0, days)
+    axs[0, 1].set_xlabel('Time (days)')
+    axs[0, 1].set_ylabel('Concentration (cells/ml)')
+    axs[0, 1].set_title('Osteoblasts')
+    axs[0, 1].legend(["Cb"])
+    axs[0, 1].grid(True)
+
+    # Cartilage
+    axs[1, 0].plot(t, ys9, 'g')
+    axs[1, 0].set_xlim(0, days)
+    axs[1, 0].set_xlabel('Time (days)')
+    axs[1, 0].set_ylabel('Concentration (g/ml)')
+    axs[1, 0].set_title('Cartilage')
+    axs[1, 0].legend(["Mc"])
+    axs[1, 0].grid(True)
+
+    # Bone formation
+    axs[1, 1].plot(t, ys10, 'r')
+    axs[1, 1].set_xlim(0, days)
+    axs[1, 1].set_xlabel('Time (days)')
+    axs[1, 1].set_ylabel('Concentration (g/ml)')
+    axs[1, 1].set_title('Bone formation')
+    axs[1, 1].legend(["Mb"])
+    axs[1, 1].grid(True)
+
     plt.tight_layout()
-
-def plot_estradiol(t, days, ys):
-    ys11 = ys[:, 10]  # E2
-
-    plt.figure()
-    plt.plot(t, ys11, 'm', linewidth=2)
-    plt.xlim(0, days)
-    plt.xlabel('Tempo (dias)')
-    plt.ylabel('Concentração')
-    plt.title('Estradiol')
-    plt.legend(['E2'])
-    plt.grid(True)
-    plt.savefig(f'{path}E2.png')
-    print(f'{path}E2.png')
+    plt.savefig(f'{path}grupo_2_Cm_Cb_Mc_Mb.png', dpi=300)
+    print(f'{path}grupo_2_Cm_Cb_Mc_Mb.png')
     plt.show()
 
 
+def plot_estradiol(t, days, ys):
 
+    ys11 = ys[:, 10]  # E2
+
+    plt.figure(figsize=(8, 5))
+    plt.plot(t, ys11, 'm', linewidth=2)
+    plt.xlim(0, days)
+    plt.xlabel('Time (days)')
+    plt.ylabel('Concentration (ng/ml)')
+    plt.title('Estradiol')
+    plt.legend(['E2'])
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig(f'{path}E2.png', dpi=300)
+    print(f'{path}E2.png')
+    plt.show()
